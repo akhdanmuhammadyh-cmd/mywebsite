@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>project.id - Freelance Marketplace & Services</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* === CSS STYLES === */
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --secondary: #0f172a;
+      --accent: #10b981;
+      --bg-light: #f8fafc;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --white: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      background-color: var(--secondary);
+      color: #94a3b8;
+      font-size: 13px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-info span {
+      margin-right: 20px;
+    }
+    .top-info i {
+      color: var(--primary);
+      margin-right: 6px;
+    }
+
+    /* Main Navigation */
+    .navbar {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .logo span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+    .nav-links a {
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .auth-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn {
+      padding: 8px 18px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-text {
+      background: transparent;
+      color: var(--text-dark);
+    }
+    .btn-text:hover { color: var(--primary); }
+    .btn-outline {
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-dark);
+    }
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+    .btn-accent {
+      background-color: var(--accent);
+      color: var(--white);
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: var(--white);
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+    }
+    .hero-content {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #cbd5e1;
+      margin-bottom: 30px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+    .hero-actions .btn {
+      padding: 14px 28px;
+      font-size: 16px;
+    }
+
+    /* Dashboard Widgets Section */
+    .dashboard-widgets {
+      margin-top: -40px;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 10;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .widget-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+    }
+    .widget-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--secondary);
+    }
+    .widget-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+    .widget-list li:last-child { border-bottom: none; }
+    .badge {
+      background: #eff6ff;
+      color: var(--primary);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* General Section Styling */
+    .section {
+      padding: 60px 0;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 32px;
+    }
+    .section-title h2 {
+      font-size: 28px;
+      color: var(--secondary);
+    }
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+    .view-all {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* Project Cards & Services Cards */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .card-category {
+      font-size: 12px;
+      color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--secondary);
+    }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+    }
+    .card-price {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    /* Happy Customers & Blog */
+    .customer-card {
+      background: var(--white);
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+    }
+    .customer-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    /* Modal Form for Auth */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: var(--white);
+      padding: 30px;
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 15px; right: 15px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--secondary);
+      color: #94a3b8;
+      padding: 40px 0;
+      text-align: center;
+      font-size: 14px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Info Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-info">
+        <span><i class="fa-solid fa-phone"></i> +62 812-3456-7890</span>
+        <span><i class="fa-solid fa-envelope"></i> support@project.id</span>
+      </div>
+      <div>
+        <span><i class="fa-solid fa-globe"></i> Indonesia</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-laptop-code"></i> project<span>.id</span>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#affiliate">Affiliate</a></li>
+        <li><a href="#blog">Blog</a></li>
+      </ul>
+
+      <div class="auth-buttons">
+        <button class="btn btn-text" onclick="openModal('loginModal')">Log In</button>
+        <button class="btn btn-outline" onclick="openModal('resetModal')">Reset</button>
+        <button class="btn btn-primary" onclick="openModal('signupModal')">Sign Up Free</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <header class="hero">
+    <div class="container hero-content">
+      <h1>Find & Hire Top Freelancers for Any Project</h1>
+      <p>Connect with expert freelancers, scale your business, and get high-quality work done faster on project.id.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-accent"><i class="fa-solid fa-plus"></i> Create Project</a>
+        <button class="btn btn-primary" onclick="openModal('signupModal')">Sign Up Now</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Widgets (New Projects, Top Workers, User Activity) -->
+  <div class="container dashboard-widgets">
+    <div class="grid-3">
+      
+      <!-- New Projects Widget -->
+      <div class="widget-card">
+        <div class="widget-title">
+          <i class="fa-solid fa-folder-open" style="color: var(--primary);"></i> New Projects
+        </div>
+        <ul class="widget-list">
+          <li>Redesign E-Commerce Website <span class="badge">Rp 3.5M</span></li>
+          <li>Mobile App Bug Fixing <span class="badge">Rp 1.2M</span></li>
+          <li>SEO Content Writer 10 Articles <span class="badge">Rp 800k</span></li>
+        </ul>
+      </div>
+
+      <!-- Top Workers Widget -->
+      <div class="widget-card">
+        <div class="widget-title">
+          <i class="fa-solid fa-star" style="color: #f59e0b;"></i> Top Workers
+        </div>
+        <ul class="widget-list">
+          <li>Budi Santoso <span class="badge" style="background: #fef3c7; color: #d97706;">★ 4.9 (120 Jobs)</span></li>
+          <li>Siti Rahma <span class="badge" style="background: #fef3c7; color: #d97706;">★ 4.9 (95 Jobs)</span></li>
+          <li>Alex Pratama <span class="badge" style="background: #fef3c7; color: #d97706;">★ 4.8 (82 Jobs)</span></li>
+        </ul>
+      </div>
+
+      <!-- User Activity Widget -->
+      <div class="widget-card">
+        <div class="widget-title">
+          <i class="fa-solid fa-bolt" style="color: var(--accent);"></i> User Activity
+        </div>
+        <ul class="widget-list">
+          <li>User <b>@rizky</b> completed project <span class="badge">Just Now</span></li>
+          <li>User <b>@dian</b> posted a new service <span class="badge">5m ago</span></li>
+          <li>User <b>@kevin</b> registered as Freelancer <span class="badge">12m ago</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- New Projects Section -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Explore New Projects</h2>
+          <p>Find the latest projects posted by clients ready for bidding.</p>
+        </div>
+        <a href="#" class="view-all">View All Projects <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="grid-4">
+        <div class="card">
+          <div class="card-category">Web Development</div>
+          <div class="card-title">Build a Responsive React Dashboard</div>
+          <p style="font-size:13px; color:var(--text-muted);">Looking for a frontend developer to build an admin panel.</p>
+          <div class="card-meta">
+            <span><i class="fa-regular fa-clock"></i> 3 days left</span>
+            <span class="card-price">Rp 5.000.000</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-category">Graphic Design</div>
+          <div class="card-title">Brand Identity & Logo Redesign</div>
+          <p style="font-size:13px; color:var(--text-muted);">Need modern branding guidelines for a tech startup.</p>
+          <div class="card-meta">
+            <span><i class="fa-regular fa-clock"></i> 5 days left</span>
+            <span class="card-price">Rp 2.500.000</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-category">Digital Marketing</div>
+          <div class="card-title">Google Ads Campaign Setup</div>
+          <p style="font-size:13px; color:var(--text-muted);">Manage and optimize PPC ads for an online store.</p>
+          <div class="card-meta">
+            <span><i class="fa-regular fa-clock"></i> 1 day left</span>
+            <span class="card-price">Rp 1.500.000</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-category">Copywriting</div>
+          <div class="card-title">Landing Page Copywriting</div>
+          <p style="font-size:13px; color:var(--text-muted);">Write high-converting sales copy for SaaS product.</p>
+          <div class="card-meta">
+            <span><i class="fa-regular fa-clock"></i> 2 days left</span>
+            <span class="card-price">Rp 1.000.000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Services Section -->
+  <section class="section" id="services" style="background: #f1f5f9;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Popular Freelance Services</h2>
+          <p>Ready-to-buy services offered by experienced freelancers.</p>
+        </div>
+        <a href="#" class="view-all">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="grid-4">
+        <div class="card">
+          <div class="card-category">WordPress</div>
+          <div class="card-title">I will create a fast WordPress website for your business</div>
+          <div class="card-meta">
+            <span>★ 5.0 (45)</span>
+            <span class="card-price">Starting Rp 750k</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-category">UI/UX Design</div>
+          <div class="card-title">I will design modern Mobile App UI in Figma</div>
+          <div class="card-meta">
+            <span>★ 4.9 (32)</span>
+            <span class="card-price">Starting Rp 900k</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-category">Video Editing</div>
+          <div class="card-title">I will edit viral TikTok, Reels, & Shorts videos</div>
+          <div class="card-meta">
+            <span>★ 4.8 (89)</span>
+            <span class="card-price">Starting Rp 300k</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-category">Data Entry</div>
+          <div class="card-title">I will clean, organize, and analyze your Excel data</div>
+          <div class="card-meta">
+            <span>★ 5.0 (18)</span>
+            <span class="card-price">Starting Rp 250k</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Happy Customers Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Happy Customers</h2>
+          <p>What clients say about working with freelancers on project.id.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="customer-card">
+          <p>"Sangat terbantu! Dapet developer handal cuma dalam hitungan jam. Hasil pengerjaannya cepat dan sesuai ekspektasi."</p>
+          <div class="customer-info">
+            <div class="avatar">AM</div>
+            <div>
+              <strong style="font-size:14px;">Andi Pratama</strong>
+              <div style="font-size:12px; color:var(--text-muted);">CEO at StartupKit</div>
+            </div>
+          </div>
+        </div>
+        <div class="customer-card">
+          <p>"Platform terbaik buat cari desainer grafis lepas. Sistem pembayarannya aman banget buat kedua belah pihak."</p>
+          <div class="customer-info">
+            <div class="avatar">N</div>
+            <div>
+              <strong style="font-size:14px;">Nadia Utami</strong>
+              <div style="font-size:12px; color:var(--text-muted);">Marketing Lead</div>
+            </div>
+          </div>
+        </div>
+        <div class="customer-card">
+          <p>"Sebagai UMKM, project.id bener-bener hemat budget bisnis saya. Bisa dapet hasil kerja profesional dengan harga terjangkau."</p>
+          <div class="customer-info">
+            <div class="avatar">R</div>
+            <div>
+              <strong style="font-size:14px;">Rudi Wijaya</strong>
+              <div style="font-size:12px; color:var(--text-muted);">Owner Kedai Kopi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog & Tips & Tricks Section -->
+  <section class="section" id="blog" style="background: #f1f5f9;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>Blog & Tips & Tricks</h2>
+          <p>Guides, insights, and career advice for freelancers and clients.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-category">Tips & Tricks</div>
+          <div class="card-title">5 Cara Membuat Proposal Project yang Pasti Diterima Client</div>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Pelajari cara menulis bid yang menarik perhatian dan langsung di-hire client.</p>
+          <span style="font-size:12px; color:var(--text-muted);">Dipublikasikan: Sep 2026</span>
+        </div>
+        <div class="card">
+          <div class="card-category">Freelance Life</div>
+          <div class="card-title">Panduan Menentukan Rate Harga Jasa untuk Pemula</div>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Jangan terlalu murah! Ini rumus menghitung tarif harian dan per project.</p>
+          <span style="font-size:12px; color:var(--text-muted);">Dipublikasikan: Sep 2026</span>
+        </div>
+        <div class="card">
+          <div class="card-category">Client Guide</div>
+          <div class="card-title">Cara Efektif Mengelola Tim Freelance Remote</div>
+          <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">Tips komunikasi dan workflow terbaik agar proyek selesai tepat waktu.</p>
+          <span style="font-size:12px; color:var(--text-muted);">Dipublikasikan: Sep 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 project.id. All rights reserved. Clean & Modern Freelance Marketplace.</p>
+    </div>
+  </footer>
+
+  <!-- Modal Popups (Log In, Sign Up, Reset Password) -->
+  
+  <!-- Log In Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+      <h3 style="margin-bottom:20px;">Log In to project.id</h3>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="email@domain.com">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••">
+      </div>
+      <button class="btn btn-primary" style="width:100%;">Log In</button>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div class="modal" id="signupModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
+      <h3 style="margin-bottom:20px;">Create Free Account</h3>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Nama Lengkap">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="email@domain.com">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••">
+      </div>
+      <button class="btn btn-primary" style="width:100%;">Sign Up Now</button>
+    </div>
+  </div>
+
+  <!-- Reset Password Modal -->
+  <div class="modal" id="resetModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('resetModal')">&times;</span>
+      <h3 style="margin-bottom:20px;">Reset Password</h3>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Masukkan email kamu untuk menerima instruksi reset password.</p>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="email@domain.com">
+      </div>
+      <button class="btn btn-primary" style="width:100%;">Send Reset Link</button>
+    </div>
+  </div>
+
+  <!-- JS Scripts -->
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+    // Close modal when clicking outside of modal content
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
